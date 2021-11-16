@@ -68,9 +68,12 @@ def analysis(path, plain):
                 
         
         # Detection of RCE/SQLI/LFI/RFI/RFU/XSS/...
+        #print(content)
         for payload in payloads:
             regex = re.compile(payload[0] + regex_indicators)
+            #print(content)
             matches = regex.findall(content.replace(" ", "(PLACEHOLDER"))
+            #print(matches)
 
             for vuln_content in matches:
 
@@ -116,7 +119,10 @@ def analysis(path, plain):
 
                         if not false_positive:
                             result_count = result_count + 1
+                            print(path, payload, vuln_content, line_vuln, declaration_text, line, vulnerable_var[1], occurence, plain)
+                            #patch_php(path)
                             display(path, payload, vuln_content, line_vuln, declaration_text, line, vulnerable_var[1], occurence, plain)
+
 
 
 # Run thru every files and subdirectories

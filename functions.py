@@ -52,8 +52,9 @@ def display(path, payload, vulnerability, line, declaration_text, declaration_li
 def find_line_vuln(payload, vulnerability, content):
     content = content.split('\n')
     for i in range(len(content)):
+        #print(payload[0] + '(' + vulnerability[0] + vulnerability[1] + vulnerability[2] + ')')
         if payload[0] + '(' + vulnerability[0] + vulnerability[1] + vulnerability[2] + ')' in content[i]:
-            return str(i - 1)
+            return str(i)
     return "-1"
 
 
